@@ -4,7 +4,7 @@ import PrivateProfile from '../div/PrivateDiv';
 import { useUserContext } from '../context/UserContext';
 import { Link } from 'react-router-dom';
 import { ButtonStyle } from '../div/UserProfileSyles';
-import { postUserStatus } from '../../api/statusUpdateAPI.api';
+import { useNavigate } from 'react-router-dom';
 
 export enum ProfileType_t
 {
@@ -19,10 +19,15 @@ interface ProfilePageProps
 
 const ProfilePage: React.FC<ProfilePageProps> = ({friend_set}) => {
 	const { user } = useUserContext();
+	const navigate = useNavigate();
 
-  useEffect(() => {
-		postUserStatus("Online", user!);
-  }, []);
+	useEffect(() => {
+		// Check if the user is logged in when the component mounts
+		if (!user) {
+			navigate('/login'); // Redirect to the login page if not logged in
+		}
+  	}, []);
+
 	return (
 		<div style={styles.pageStyle}>
       <PrivateProfile userID={user?.userID}/>

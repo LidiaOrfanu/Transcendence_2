@@ -36,12 +36,10 @@ const CompleteProfilePage: React.FC = () => {{
 		if (file) {
 			if (file.size > 1024 * 1024) {
 				setError('Image size is too big!');
-			  }
-			  else
-			  {
+			} else {
 				setNewAvatar(file);
 				setSelectedImage(URL.createObjectURL(file));
-			  }
+			}
 		}
 	};
 
@@ -50,6 +48,7 @@ const CompleteProfilePage: React.FC = () => {{
 			// Handle first-time login here, if needed
 		  } else if (user?.intraUsername !== intraName) {
 			setError('Unauthorized access');
+			navigate('/');
 			return;
 		  }
 		  
@@ -91,14 +90,6 @@ const CompleteProfilePage: React.FC = () => {{
 					newCreatedUser.avatarPath = userObjectWithAvatar.avatarPath;
 				} catch (error) {;}
 			}
-            if (newUsername) {
-                try {
-                    const updatedUser = await updateUsernameApi(newCreatedUser.userID, newUsername, newCreatedUser.intraUsername, newCreatedUser.passwordHash);
-					newCreatedUser.username = updatedUser.username;
-                } catch (error) {
-                    setError('Error uploading username');
-                }
-            }
 			localStorage.setItem('user', JSON.stringify(newCreatedUser));
 			setUser(newCreatedUser);
 
