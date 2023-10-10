@@ -63,8 +63,8 @@ export const profilePictureStyle: CSSProperties = {
 
 export const listContainerStyle: CSSProperties = {
 	listStyleType: 'none',
-	margin: '0px',
-	padding: '0px',
+	margin: '15px',
+	padding: '10px',
 	overflow: 'hidden',
 	backgroundColor: '#87CEEB',
 	borderRadius: '12px',

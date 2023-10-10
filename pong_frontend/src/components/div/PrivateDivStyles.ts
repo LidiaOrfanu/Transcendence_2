@@ -9,6 +9,7 @@ export const profilePictureStyle: Properties = {
 }
 
 export const listContainerStyle: Properties = {
+	display: 'flex',
 	listStyleType: 'none',
 	margin: '0px',
 	padding: '0px',
@@ -20,7 +21,7 @@ export const listContainerStyle: Properties = {
 }
 
 export const listStyle: Properties = {
-	float: 'left',
+	// float: 'left',	
 }
 
 export const statListItemStyle: Properties = {
